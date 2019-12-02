@@ -1,0 +1,24 @@
+<resources>
+    <string name="app_name">LPPMAndroid</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+    <string name="login">Login</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="title_activity_home_admin">HomeAdminActivity</string>
+    <string name="logout">Logout</string>
+
+    <string name="str_lppm">Tentang LPPM UIN Sultan Syarif Kasim Riau</string>
+    <string name="pengertian">LPPM UIN Suska Riau adalah Lembaga Penelitian dan Pengabdian kepada Masyarakat Universitas Islam Negeri Sultan Syarif Kasim Riau.</string>
+    <string name="visi_dan_misi">Visi dan Misi</string>
+    <string name="isi_visi_misi">Visi:\n\tTerwujudnya Lembaga Penelitian dan Pengabdian kepada Masyarakat UIN Sultan Syarif Kasim Riau sebagai lembaga model dalam bidang penelitian integrasi keilmuan di dunia tahun 2033 Misi :\n1. Melaksanakan penelitian untuk mengembangkan ilmu pengetahuan, teknologi, dan seni berbasis integrasi keilmuan; \n2. Memanfaatkan ilmu pengetahuan, teknologi dan seni yang integratif untuk melaksanakan pengabdian kepada masyarakat sebagai kontribusi terhadap pembangunan peradaban manusia; \n3. Menerapkan tata kelola (good governance) lembaga yang memfasilitasi integrasi keilmuan secara otonom, efektif, transparan dan akuntabel; \n4. Mengembangkan sumber daya insani yang mempunyai kapabilitas, integritas, dan etos untuk melaksanakan tridarma perguruan tinggi berbasis integrasi keilmuan.</string>
+    <string name="struktur_organisasi">Struktur Organisasi</string>
+    <string name="nama_struktur"><b>Ketua</b>\nProf. Dr. H. M. Arrafie Abduh, M.Ag\n\n<b>Sekretaris</b>\nDr. Hasbullah, M.Si\n\n<b>Kepala Pusat Penelitian dan Penerbitan</b>\nDr. Alwis Nazir, M.Kom\n\n<b>Kepala Pusat Pengabdian Kepada Masyarakat</b>\nDr. H. Zarkasih, M.Ag\n\n<b>Kepala Pusat Studi Gender Dan Anak</b>\nDr. Sukma Erni, M.Pd\n\n<b>Kasubag LPPM</b>\nH. Yazil, S.Ag\n\n<b>Staff LPPM</b>\nAzhar, S.Pd.I\nHadi Saputra, SE\nSuzhisni Ade PP, M.Si\nNurul Zaman, M. Pd.I\nMulliadi, S. Pd.I\nAsro Hidayati\nMeli Hayati, S.Pd.I\nHerdina Sagita, S. Sos\nImam Hanafi, MA\nSuhendri Rizki, SE\nHasnul Habibullah, SE\nZulkipli</string>
+    <string name="alamat">Alamat</string>
+    <string name="isi_alamat">Gedung Islamic Center UIN Sultan Syarif Kasim Riau\nJl. H.R. Soebrantas K.M. 15.5 Pekanbaru Riau 28292\nEmail : lppm@uin-suska.ac.id</string>
+    <string name="create_by_admin">Create By <b>Admin</b></string>
+</resources>
