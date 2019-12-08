@@ -1,5 +1,6 @@
 package com.example.fadllil.lppmandroid
 
+import android.app.ProgressDialog
 import android.app.SearchManager
 import android.content.Context
 import android.support.v7.app.AppCompatActivity
@@ -26,6 +27,7 @@ class PenelitianActivity : AppCompatActivity() {
 
     var dataList : MutableList<Penelitian> = ArrayList()
     var searchView : SearchView?=null
+    lateinit var loading : ProgressDialog
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -45,6 +47,10 @@ class PenelitianActivity : AppCompatActivity() {
         adapter = PenAdapter(this, dataList)
         recycler_view_penelitian.adapter = adapter
 
+        loading = ProgressDialog(this)
+        loading.setMessage("Mengambil data...")
+        loading.show()
+
         fetchData()
     }
 
@@ -56,6 +62,7 @@ class PenelitianActivity : AppCompatActivity() {
     }
 
     private fun displayData(data: List<Penelitian>?) {
+        loading.dismiss()
         dataList.clear()
         dataList.addAll(data!!)
         adapter.notifyDataSetChanged()
@@ -107,6 +114,4 @@ class PenelitianActivity : AppCompatActivity() {
         }
         super.onBackPressed()
     }
-
-
 }

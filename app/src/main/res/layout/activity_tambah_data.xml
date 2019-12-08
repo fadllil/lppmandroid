@@ -5,15 +5,18 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="10dp"
-    android:background="@drawable/background_gray_secondary"
+    android:padding="20dp"
+    android:background="@drawable/bg_blue_secondary"
     tools:context=".admin.TambahDataActivity">
 
     <android.support.v7.widget.CardView
+        android:id="@+id/cv2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:background="@drawable/background_white_primary">
+        android:background="@drawable/background_white_primary"
+        android:layout_marginBottom="5dp"
+        app:layout_constraintBottom_toTopOf="@+id/Linear_btn">
 
         <LinearLayout
             android:padding="10dp"
@@ -33,6 +36,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Masukkan Judul"
+                android:padding="5dp"
+                android:background="@drawable/background_gray_secondary"
+                android:inputType="text"
                 android:textSize="16dp"
                 />
             <TextView
@@ -42,23 +48,49 @@
                 android:text="Keterangan"
                 android:textColor="@color/blackPrimary"
                 android:fontFamily="@font/mmedium"/>
+
             <EditText
+                android:id="@+id/edt_keterangan"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="16dp"
-                android:inputType="textLongMessage"
                 android:hint="Masukkan Keterangan"
+                android:inputType="text|textMultiLine"
+                android:lines="5"
+                android:padding="5dp"
+                android:background="@drawable/background_gray_secondary"
+                android:textSize="16dp"
+                android:gravity="top"
+                android:layout_marginBottom="10dp"/>
+
+            <Button
+                android:id="@+id/btn_pilih_file"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="Pilih File"
+                android:layout_marginBottom="5dp"
+                android:textColor="@color/whitePrimary"
+                android:background="@drawable/background_blue_primary"
                 />
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType=""/>
 
         </LinearLayout>
 
-
-
-
     </android.support.v7.widget.CardView>
+
+    <LinearLayout
+        android:id="@+id/Linear_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="@+id/cv2">
+
+        <Button
+            android:id="@+id/btn_simpan"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Simpan"
+            android:textColor="@color/whitePrimary"
+            android:background="@drawable/background_green_primary"/>
+
+    </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>

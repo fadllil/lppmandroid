@@ -29,7 +29,9 @@ class PenAdapter(internal var context: Context, internal var itemList:List<Penel
                     val resultList = ArrayList<Penelitian>()
                     for (row in itemList)
                     {
-                        if (row.judul!!.toLowerCase().contains(charSearch.toLowerCase()))
+                        if (row.judul!!.toLowerCase().contains(charSearch.toLowerCase()) ||
+                                row.namaCluster!!.toLowerCase().contains(charSearch.toLowerCase()) ||
+                                row.namaRak!!.toLowerCase().contains(charSearch.toLowerCase()))
                             resultList.add(row)
                     }
                     filterLisResult = resultList
@@ -59,7 +61,7 @@ class PenAdapter(internal var context: Context, internal var itemList:List<Penel
         holder.txt_judul.text = filterLisResult.get(position).judul
         holder.txt_penulis.text = filterLisResult.get(position).penulis
         holder.txt_nosk.text = filterLisResult.get(position).noSk
-        holder.txt_rak.text = filterLisResult.get(position).idRak.toString()
+        holder.txt_rak.text = filterLisResult.get(position).namaRak
         holder.txt_cluster.text = filterLisResult.get(position).namaCluster
     }
 

@@ -1,5 +1,6 @@
 package com.example.fadllil.lppmandroid
 
+import android.app.ProgressDialog
 import android.app.SearchManager
 import android.content.Context
 import android.content.Intent
@@ -33,8 +34,9 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     lateinit var adapter: InfoAdapter
     var compositeDisposable = CompositeDisposable()
 
-    var dataList : MutableList<Info> = ArrayList()
+    var  dataList :MutableList<Info> = ArrayList()
     var searchView : SearchView?=null
+    lateinit var loading : ProgressDialog
 
 
 
@@ -61,6 +63,9 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         adapter = InfoAdapter(this, dataList)
         recycler_view_info.adapter = adapter
 
+        loading = ProgressDialog(this)
+        loading.setMessage("Mengambil data...")
+        loading.show()
 
         fetchData()
 
@@ -80,7 +85,8 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 .subscribe{ data -> displayData(data)})
     }
 
-    private fun displayData(data: List<Info>?) {
+    private fun displayData(data: List<Info>) {
+        loading.dismiss()
         dataList.clear()
         dataList.addAll(data!!)
         adapter.notifyDataSetChanged()

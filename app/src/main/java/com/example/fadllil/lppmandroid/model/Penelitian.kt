@@ -10,11 +10,17 @@ data class Penelitian(
 	@field:SerializedName("penulis")
 	val penulis: String? = null,
 
-	@field:SerializedName("id_fakultas")
-	val idFakultas: Int? = null,
-
 	@field:SerializedName("id_rak")
 	val idRak: Int? = null,
+
+	@field:SerializedName("tahun")
+	val tahun: Int? = null,
+
+	@field:SerializedName("nama_rak")
+	val namaRak: String? = null,
+
+	@field:SerializedName("id_fakultas")
+	val idFakultas: Int? = null,
 
 	@field:SerializedName("id_cluster")
 	val idCluster: Int? = null,
@@ -27,9 +33,6 @@ data class Penelitian(
 
 	@field:SerializedName("no_sk")
 	val noSk: String? = null,
-
-	@field:SerializedName("tahun")
-	val tahun: Int? = null,
 
 	@field:SerializedName("pendanaan")
 	val pendanaan: Int? = null,

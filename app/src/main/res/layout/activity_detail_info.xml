@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@drawable/background_gray_secondary"
+    android:background="@drawable/bg_blue_secondary"
     android:padding="10dp"
     tools:context=".DetailInfoActivity">
 
@@ -44,6 +44,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:textSize="20dp"
+            android:background="@drawable/background_gray_secondary"
             android:textStyle="bold"
             app:layout_constraintTop_toTopOf="parent"
             tools:layout_editor_absoluteX="0dp" />
@@ -66,6 +67,7 @@
                 android:id="@+id/detail_tanggal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@drawable/background_gray_secondary"
                 android:layout_marginBottom="5dp"
                 android:textSize="14dp"/>
 
@@ -76,11 +78,19 @@
                 android:textSize="16dp"
                 android:text="Keterangan"/>
 
-            <TextView
+            <EditText
                 android:id="@+id/detail_keterangan"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="14dp"/>
+                android:hint="Masukkan Keterangan"
+                android:inputType="text|textMultiLine"
+                android:editable="false"
+                android:lines="5"
+                android:padding="5dp"
+                android:background="@drawable/background_gray_secondary"
+                android:textSize="16dp"
+                android:gravity="top"
+                android:layout_marginBottom="10dp"/>
 
         </LinearLayout>
     </android.support.v7.widget.CardView>

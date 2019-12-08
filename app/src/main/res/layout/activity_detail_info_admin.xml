@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@drawable/background_gray_secondary"
+    android:background="@drawable/bg_blue_secondary"
     android:padding="10dp"
     tools:context=".admin.DetailInfoAdminActivity">
 
@@ -38,15 +38,16 @@
                 android:paddingRight="10dp"
                 android:orientation="vertical">
 
-                <TextView
+                <EditText
                     android:id="@+id/detail_judul"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:textSize="20dp"
-                    android:textStyle="bold"
-                    app:layout_constraintTop_toTopOf="parent"
-                    tools:layout_editor_absoluteX="0dp" />
+                    android:hint="Masukkan Judul"
+                    android:padding="5dp"
+                    android:background="@drawable/background_gray_secondary"
+                    android:inputType="text"
+                    android:textSize="18dp"
+                    />
 
                 <View
                     android:layout_width="match_parent"
@@ -66,6 +67,7 @@
                     android:id="@+id/detail_tanggal"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:background="@drawable/background_gray_secondary"
                     android:layout_marginBottom="5dp"
                     android:textSize="14dp"/>
 
@@ -76,11 +78,26 @@
                     android:textSize="16dp"
                     android:text="Keterangan"/>
 
-                <TextView
+                <EditText
                     android:id="@+id/detail_keterangan"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textSize="14dp"/>
+                    android:hint="Masukkan Keterangan"
+                    android:inputType="text|textMultiLine"
+                    android:lines="5"
+                    android:padding="5dp"
+                    android:background="@drawable/background_gray_secondary"
+                    android:textSize="16dp"
+                    android:gravity="top"
+                    android:layout_marginBottom="10dp"/>
+
+                <Button
+                    android:id="@+id/btn_edit_file"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="Pilih File"
+                    android:textColor="@color/whitePrimary"
+                    android:background="@drawable/background_blue_primary"/>
 
             </LinearLayout>
         </android.support.v7.widget.CardView>
@@ -95,7 +112,7 @@
             android:layout_marginTop="10dp">
 
             <Button
-                android:id="@+id/btn_download"
+                android:id="@+id/btn_edit"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="20dp"
@@ -106,7 +123,7 @@
                 android:background="@drawable/background_blue_primary"/>
 
             <Button
-                android:id="@+id/btn_dellete"
+                android:id="@+id/btn_delete"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"

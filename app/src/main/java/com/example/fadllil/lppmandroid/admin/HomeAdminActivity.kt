@@ -1,25 +1,24 @@
 package com.example.fadllil.lppmandroid.admin
 
+import android.app.ProgressDialog
 import android.app.SearchManager
 import android.content.Context
+import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
-import android.support.design.widget.Snackbar
 import android.support.design.widget.NavigationView
 import android.support.v4.view.GravityCompat
 import android.support.v4.widget.DrawerLayout
 import android.support.v7.app.ActionBarDrawerToggle
+import android.support.v7.app.AlertDialog
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.SearchView
 import android.view.Menu
 import android.view.MenuItem
-import com.example.fadllil.lppmandroid.DetailInfoActivity
 import com.example.fadllil.lppmandroid.LoginActivity
-import com.example.fadllil.lppmandroid.MainActivity
 import com.example.fadllil.lppmandroid.R
 import com.example.fadllil.lppmandroid.adapter.InfoAdapter
-import com.example.fadllil.lppmandroid.adapter.InfoAdminAdapter
 import com.example.fadllil.lppmandroid.model.Info
 import com.example.fadllil.lppmandroid.model.SharedPrefManager
 import com.example.fadllil.lppmandroid.service.RetroClient
@@ -30,16 +29,16 @@ import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.activity_home_admin.*
 import kotlinx.android.synthetic.main.app_bar_home_admin.*
 import kotlinx.android.synthetic.main.content_home_admin.*
-import kotlinx.android.synthetic.main.content_main.*
 
 class HomeAdminActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 
     lateinit var apiService : ApiService
-    lateinit var adapter: InfoAdminAdapter
+    lateinit var adapter: InfoAdapter
     var compositeDisposable = CompositeDisposable()
 
     var dataList : MutableList<Info> = ArrayList()
     var searchView : SearchView?=null
+    lateinit var loading : ProgressDialog
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -59,8 +58,12 @@ class HomeAdminActivity : AppCompatActivity(), NavigationView.OnNavigationItemSe
         recycler_view_info_admin.setHasFixedSize(true)
         recycler_view_info_admin.layoutManager = LinearLayoutManager(this)
 
-        adapter = InfoAdminAdapter(this, dataList)
+        adapter = InfoAdapter(this, dataList)
         recycler_view_info_admin.adapter = adapter
+
+        loading = ProgressDialog(this)
+        loading.setMessage("Mengambil data...")
+        loading.show()
 
         fetchData()
 
@@ -85,11 +88,12 @@ class HomeAdminActivity : AppCompatActivity(), NavigationView.OnNavigationItemSe
     }
 
     private fun displayData(data: List<Info>?) {
+        loading.dismiss()
         dataList.clear()
         dataList.addAll(data!!)
         adapter.notifyDataSetChanged()
 
-        adapter.setCustomItemClickListener(object : InfoAdminAdapter.CustomItemClickListener{
+        adapter.setCustomItemClickListener(object : InfoAdapter.CustomItemClickListener{
             override fun onItemClicked(info: Info) {
                 showSelectedData(info)
 //                Toast.makeText(applicationContext, info.keteranganInfo, Toast.LENGTH_LONG).show()
@@ -144,11 +148,21 @@ class HomeAdminActivity : AppCompatActivity(), NavigationView.OnNavigationItemSe
         // as you specify a parent activity in AndroidManifest.xml.
         when (item.itemId) {
             R.id.logout -> {
-                SharedPrefManager.getInstance(applicationContext).clear()
-                val intent = Intent(applicationContext, LoginActivity::class.java)
-                intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                AlertDialog.Builder(this)
+                        .setTitle("Konfirmasi")
+                        .setMessage("Anda Ingin Keluar ?")
+                        .setPositiveButton("Ya", DialogInterface.OnClickListener { dialogInterface, i ->
+                            SharedPrefManager.getInstance(applicationContext).clear()
+                            val intent = Intent(applicationContext, LoginActivity::class.java)
+                            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
 
-                startActivity(intent)
+                            startActivity(intent)
+                        })
+                        .setNegativeButton("BATAL", DialogInterface.OnClickListener { dialogInterface, i ->
+                            dialogInterface.dismiss()
+                        })
+                        .show()
+
                 return true
             }
             R.id.action_search -> {
@@ -164,9 +178,6 @@ class HomeAdminActivity : AppCompatActivity(), NavigationView.OnNavigationItemSe
             R.id.nav_home_admin -> {
                 intent = Intent(applicationContext, HomeAdminActivity::class.java)
                 startActivity(intent)
-            }
-            R.id.nav_send -> {
-
             }
         }
 
