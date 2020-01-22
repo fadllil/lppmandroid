@@ -31,7 +31,8 @@ class PenAdapter(internal var context: Context, internal var itemList:List<Penel
                     {
                         if (row.judul!!.toLowerCase().contains(charSearch.toLowerCase()) ||
                                 row.namaCluster!!.toLowerCase().contains(charSearch.toLowerCase()) ||
-                                row.namaRak!!.toLowerCase().contains(charSearch.toLowerCase()))
+                                row.namaRak!!.toLowerCase().contains(charSearch.toLowerCase()) ||
+                                row.penulis!!.toLowerCase().contains(charSearch.toLowerCase()))
                             resultList.add(row)
                     }
                     filterLisResult = resultList

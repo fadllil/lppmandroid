@@ -46,8 +46,8 @@ class LoginActivity : AppCompatActivity() {
                                 call: Call<LoginResponse>,
                                 response: Response<LoginResponse>
                         ) {
-                            if (response.body()?.error==false){
-                                Toast.makeText(applicationContext, response.body()?.message, Toast.LENGTH_LONG).show()
+                            if (response.body()?.message == "berhasil"){
+                                Toast.makeText(applicationContext, "Berhasil Login", Toast.LENGTH_LONG).show()
                                 SharedPrefManager.getInstance(applicationContext)
                                         .saveUser(response.body()?.data?.user!!)
                                 val intent = Intent(applicationContext, HomeAdminActivity::class.java)
@@ -55,8 +55,10 @@ class LoginActivity : AppCompatActivity() {
                                         Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
 
                                 startActivity(intent)
-                            }else{
-                                Toast.makeText(applicationContext, "username atau password salah", Toast.LENGTH_LONG).show()
+                            }else if (response.body()?.message == "salah"){
+                                Toast.makeText(applicationContext, "Username atau password salah", Toast.LENGTH_LONG).show()
+                            } else{
+                                Toast.makeText(applicationContext, "Anda Tidak Terdaftar", Toast.LENGTH_LONG).show()
                             }
                         }
                     })
